@@ -18,7 +18,4 @@ export class Formula extends ExcelComponent {
 
     onInput(event) {
     }
-
-    onClick() {
-    }
 }

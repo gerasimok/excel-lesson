@@ -2,6 +2,7 @@ const CODES = {
     A: 65,
     Z: 90
 }
+
 function toColumn(col, index) {
     return `
         <div class="column" data-type="resizable" data-col="${index}">
@@ -24,6 +25,21 @@ function createRow(index, content) {
             ${index ? index : ''}
             ${resize}
         </div>
+function toColumn(col) {
+    return `
+        <div class="column">${col}</div>
+    `
+}
+
+function toCell() {
+    return `
+        <div class="cell" contenteditable></div>
+    `
+}
+function createRow(index, content) {
+    return `
+    <div class="row">
+        <div class="row-info">${index ? index : ''}</div>
         <div class="row-data">${content}</div>
     </div>
     `
