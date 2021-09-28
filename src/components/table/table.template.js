@@ -2,6 +2,29 @@ const CODES = {
     A: 65,
     Z: 90
 }
+
+function toColumn(col, index) {
+    return `
+        <div class="column" data-type="resizable" data-col="${index}">
+            ${col}
+            <div class="col-resize" data-resize="col"></div>
+        </div>
+    `
+}
+
+function toCell(_, col) {
+    return `
+        <div class="cell" contenteditable data-col="${col}"></div>
+    `
+}
+function createRow(index, content) {
+    const resize = index ?  '<div class="row-resize" data-resize="row"></div>' : ''
+    return `
+    <div class="row" data-type="resizable">
+        <div class="row-info">
+            ${index ? index : ''}
+            ${resize}
+        </div>
 function toColumn(col) {
     return `
         <div class="column">${col}</div>
@@ -35,8 +58,6 @@ export function createTable(rowsCount = 15) { //сколько строчек б
         .map(toChar)
         .map(toColumn)
         .join('')
-
-    console.log(cols)
 
     rows.push(createRow(null, cols))
 
